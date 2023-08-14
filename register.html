@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Tech show</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="header">
+        <img src="asset/chula-engineer-logo.png" alt="logo" class="logo">
+        <div class="navbar">
+            <a class="link">FAQ</a>
+            <a class="link">Partners</a>
+        </div>
+    </div>
+    <div class="main">
+        <h1>Register for event</h1>
+
+        <form class="register-form" action="javascript:register()">
+            <div class="line">
+                <p>Company name: </p>
+                <input type="text" name="company-name" placeholder="company name">
+            </div>
+
+            <div class="line">
+                <p>Booth size: </p>
+                <select name="booth-size">
+                    <option value="0">Please select</option>
+                    <option value="10">10*10 ft</option>
+                    <option value="15">10*15 ft</option>
+                </select>
+            </div>
+
+            <div class="line">
+                <p>Table?</p>
+                <input type="checkbox" name="table">
+            </div>
+
+            <div class="line">
+                <p>Chair:</p>
+                <input type="number" name="chair" placeholder="number of chair">
+            </div>
+
+            <div class="line">
+                <p>Name:</p>
+                <input type="text" name="name" placeholder="name">
+            </div>
+
+            <div class="line">
+                <p>Phone number:</p>
+                <input type="text" name="tel" placeholder="tel">
+            </div>
+            <input type="submit" id="register-submit"></input>
+        </form>
+
+    </div>
+
+</body>
+
+</html>
