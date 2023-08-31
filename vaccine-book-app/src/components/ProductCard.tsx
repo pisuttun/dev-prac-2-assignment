@@ -1,13 +1,12 @@
-import styles from "./productCard.module.css";
 import Image from "next/image";
 
-export default function ProductCard() {
+export default function ProductCard(props: { title: string; imgUrl: string }) {
   return (
-    <div className={styles.card}>
-      <div className={styles.cardimg}>
-        <Image src={"/img/vaccine.jpg"} alt="Pic" fill={true} objectFit="cover" />
+    <div className="w-1/5 h-[300px] rounded-lg shadow-lg">
+      <div className="w-full h-[60%] relative rounded-t-lg">
+        <Image src={props.imgUrl} alt="Pic" fill={true} objectFit="cover" />
       </div>
-      <div className={styles.cardtext}>Phizer</div>
+      <div className="w-full h-[30%] p-[10px] text-black">{props.title}</div>
     </div>
   );
 }
