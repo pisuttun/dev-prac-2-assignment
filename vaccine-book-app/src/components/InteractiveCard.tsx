@@ -2,9 +2,6 @@
 import React from "react";
 
 export default function InteractiveCard({children,title}:{children:React.ReactNode,title:string}){
-  function onSelected(){
-    alert("Select " + title)
-  }
   function onCardMouseAction(event:React.SyntheticEvent) {
     if(event.type=='mouseover'){
       event.currentTarget.classList.remove('bg-white')
@@ -22,7 +19,6 @@ export default function InteractiveCard({children,title}:{children:React.ReactNo
 
   return(
     <div className="w-1/5 h-[300px] rounded-lg shadow-lg"
-    onClick={()=>onSelected()}
     onMouseOver={(e)=>onCardMouseAction(e)}
     onMouseOut={(e)=>onCardMouseAction(e)}
     >
