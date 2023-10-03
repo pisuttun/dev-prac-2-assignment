@@ -1,5 +1,5 @@
 'use client'
-import {useReducer} from 'react'
+import {useReducer, useRef} from 'react'
 import ProductCard from "./ProductCard";
 import Link from "next/link";
 
