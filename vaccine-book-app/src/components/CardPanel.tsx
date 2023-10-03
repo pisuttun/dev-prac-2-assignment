@@ -1,7 +1,13 @@
 'use client'
 import {useReducer} from 'react'
 import ProductCard from "./ProductCard";
+import Link from "next/link";
 
+const mockHospitalRepo = [
+  { hid:"001", name:"Chulalongkorn Hospital", image:"/img/chula.jpg"},
+  { hid:"002", name:"Rajavithi Hospital", image:"/img/rajavithi.jpg"},
+  { hid:"003", name:"Thammasat University Hospital", image:"/img/thammasat.jpg"},
+]
 export default function CardPanel() {
   const ratingReducer = (ratingList:Map<string,number>, action:{type:string, hospitalName:string, score:number})=>{
     switch(action.type) {
@@ -21,15 +27,14 @@ export default function CardPanel() {
   return (
     <div className= "w-full">
       <div className= "m-5 flex flex-row content-around justify-around flex-wrap" >
-        <ProductCard title='Chulalongkorn Hospital' imgUrl='/img/chula.jpg'
-                     score={ratingList.has('Chulalongkorn Hospital') ? ratingList.get('Chulalongkorn Hospital')! : 0}
-                     onRating={(hospitalName:string, score:number) => dispatchRating({type:'add', hospitalName:hospitalName, score:score })}/>
-        <ProductCard title='Rajavithi Hospital' imgUrl='/img/rajavithi.jpg'
-                     score={ratingList.has('Rajavithi Hospital') ? ratingList.get('Rajavithi Hospital')! : 0}
-                     onRating={(hospitalName:string, score:number) => dispatchRating({type:'add', hospitalName:hospitalName, score:score })}/>
-        <ProductCard title='Thammasat University Hospital' imgUrl='/img/thammasat.jpg'
-                     score={ratingList.has('Thammasat University Hospital') ? ratingList.get('Thammasat University Hospital')! : 0}
-                     onRating={(hospitalName:string, score:number) => dispatchRating({type:'add', hospitalName:hospitalName, score:score })}/>
+        {mockHospitalRepo.map((hospital)=>(
+          <Link href={`/hospital/${hospital.hid}`} className="w-1/5">
+          <ProductCard title={hospital.name} imgUrl={hospital.image}
+                       score={ratingList.has(hospital.name) ? ratingList.get(hospital.name)! : 0}
+                       onRating={(hospitalName:string, score:number) => dispatchRating({type:'add', hospitalName:hospitalName, score:score })}
+          />
+          </Link>
+        ))}
       </div>
       {Array.from(ratingList).map(([hospitalName, score]) => (
         <div className= "m-2" key={hospitalName}
