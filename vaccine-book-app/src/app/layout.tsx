@@ -3,6 +3,7 @@ import "./globals.css";
 import { Inter } from "next/font/google";
 import {getServerSession} from "next-auth";
 import NextAuthProvider from "@/providers/NextAuthProvider";
+import ReduxProvider from "@/redux/ReduxProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,10 +18,12 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   return (
     <html lang="en">
       <body className={inter.className}>
-        <NextAuthProvider session={nextAuthSession}>
-          <Topmenu />
-          {children}
-        </NextAuthProvider>
+        <ReduxProvider>
+          <NextAuthProvider session={nextAuthSession}>
+            <Topmenu />
+            {children}
+          </NextAuthProvider>
+        </ReduxProvider>
       </body>
     </html>
   );
