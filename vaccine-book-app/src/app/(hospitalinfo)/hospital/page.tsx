@@ -11,8 +11,8 @@ import AddHospitalForm from "@/components/AddHospitalForm";
 export default async function Hospital(){
   const hospitals = getHospitals()
   const session = await getServerSession(authOptions);
-  if (!session || !session.user.token) return null;
-  const profile = await getUserProfile(session.user.token)
+  // if (!session || !session.user.token) return null;
+  //const profile = await getUserProfile(session.user.token)
   return(
     <main className="text-center p-5 my-8">
       <h1 className="text-xl font-medium">Hospital list</h1>
@@ -21,7 +21,7 @@ export default async function Hospital(){
       </Suspense>
       <UserProfileCard />
       {
-        profile.data.role === "admin" && <AddHospitalForm/>
+        //profile.data.role === "admin" && <AddHospitalForm/>
       }
     </main>
   )
